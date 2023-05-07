@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignupActivity">
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="91dp"
+        android:layout_marginEnd="10dp"
+        android:ems="10"
+        android:hint="E-mail"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/btnKayit"
+        android:layout_width="126dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="28dp"
+        android:text="Giriş Yap"
+        app:layout_constraintEnd_toEndOf="@+id/password"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="@+id/password"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="Şifre"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/email"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="98dp"
+        android:layout_marginEnd="10dp"
+        android:text="GİRİŞ"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnGirisYonlendir"
+        android:layout_width="182dp"
+        android:layout_height="77dp"
+        android:layout_marginTop="56dp"
+        android:text="Hayır, Kayıt Olmak İstiyorum"
+        app:layout_constraintEnd_toEndOf="@+id/btnKayit"
+        app:layout_constraintStart_toStartOf="@+id/btnKayit"
+        app:layout_constraintTop_toBottomOf="@+id/btnKayit" />
+
+    <Button
+        android:id="@+id/btnForgotPassword"
+        android:layout_width="176dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="67dp"
+        android:text="Şifremi Unuttum"
+        app:layout_constraintEnd_toEndOf="@+id/btnGirisYonlendir"
+        app:layout_constraintStart_toStartOf="@+id/btnGirisYonlendir"
+        app:layout_constraintTop_toBottomOf="@+id/btnGirisYonlendir" />
+</androidx.constraintlayout.widget.ConstraintLayout>
