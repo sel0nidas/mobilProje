@@ -51,14 +51,14 @@ public class ProfileOnlyShowActivity extends AppCompatActivity {
         String userid = getIntent().getStringExtra("primaryId");
         StorageReference imageRef = storageRef.child("images/profilePhotos/"+userid);
 
-        TextView adText = findViewById(R.id.ad_text_view);
-        TextView soyadText = findViewById(R.id.soyad_text_view);
-        TextView girisYilText = findViewById(R.id.giris_yil_text_view);
-        TextView mezunYilText = findViewById(R.id.mezun_yil_text_view);
-        TextView emailText = findViewById(R.id.email_text_view);
+        TextView adText = findViewById(R.id.adText);
+        TextView soyadText = findViewById(R.id.soyadText);
+        TextView girisYilText = findViewById(R.id.girisYilText);
+        TextView mezunYilText = findViewById(R.id.mezunYilText);
+        TextView emailText = findViewById(R.id.emailText);
 
         //Button btnUpdate = (Button) findViewById(R.id.btnUpdate);
-        Button btnHome = (Button) findViewById(R.id.btnHome);
+        Button btnHome = (Button) findViewById(R.id.btnFriendRequest);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference usersRef = db.collection("users");

@@ -72,12 +72,26 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(AuthResult authResult) {
                                 //Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                if (user != null) {
+                                    if (user.isEmailVerified()) {
+                                        // User is signed in and email is verified
+                                        Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                                        //Toast.makeText(LoginActivity.this, currentFirebaseUser.getUid().toString(), Toast.LENGTH_SHORT).show();
+                                        intent.putExtra("primaryId", currentFirebaseUser.getUid());
+                                        startActivity(intent);
 
-                                Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
-                                FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-                                //Toast.makeText(LoginActivity.this, currentFirebaseUser.getUid().toString(), Toast.LENGTH_SHORT).show();
-                                intent.putExtra("primaryId", currentFirebaseUser.getUid());
-                                startActivity(intent);
+                                    } else {
+                                        // User is signed in but email is not verified
+                                        // Prompt the user to verify their email
+                                        Toast.makeText(LoginActivity.this, "Please check email for verification", Toast.LENGTH_SHORT).show();
+                                    }
+                                } else {
+                                    // User is not signed in
+                                    Toast.makeText(LoginActivity.this, "Failed on Login", Toast.LENGTH_SHORT).show();
+                                }
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override

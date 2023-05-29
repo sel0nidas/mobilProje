@@ -1,0 +1,31 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_home"
+        android:layout_height="match_parent"
+        android:icon="@drawable/house_solid"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/action_search"
+        android:layout_height="match_parent"
+        android:title="Search"
+        android:icon="@drawable/magnifying_glass_solid"/>
+    <!--
+    <item
+        android:id="@+id/action_post"
+        android:layout_height="match_parent"
+        android:title="Post"
+        android:icon="@drawable/pen_to_square_solid"/>
+    -->
+    <item
+        android:id="@+id/action_bell"
+        android:layout_height="match_parent"
+        android:title="Friend Requests"
+        android:icon="@drawable/users_solid"/>
+
+    <item
+        android:id="@+id/action_profile"
+        android:layout_height="match_parent"
+        android:title="Profile"
+        android:icon="@drawable/user_solid"/>
+</menu>

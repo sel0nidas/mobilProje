@@ -53,7 +53,7 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_profile_test);
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
@@ -61,6 +61,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         String userid = currentFirebaseUser.getUid();
+        //String userid = "D01CYu20ARXRJx0Sp1QwCi1GkDO2";
         StorageReference imageRef = storageRef.child("images/profilePhotos/"+userid);
 
         TextView adText = findViewById(R.id.adText);
@@ -68,16 +69,17 @@ public class ProfileActivity extends AppCompatActivity {
         TextView girisYilText = findViewById(R.id.girisYilText);
         TextView mezunYilText = findViewById(R.id.mezunYilText);
         TextView emailText = findViewById(R.id.emailText);
+        TextView phoneText = findViewById(R.id.phoneText);
+        TextView bolumText = findViewById(R.id.bolumText);
 
         Button btnGallery = (Button) findViewById(R.id.btnGallery);
         Button btnUpdate = (Button) findViewById(R.id.btnUpdate);
-        Button btnHome = (Button) findViewById(R.id.btnHome);
+        //Button btnHome = (Button) findViewById(R.id.btnFriendRequest);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference usersRef = db.collection("users");
 
         DocumentReference userRef = db.collection("users").document(userid);
-
 
         pickImageLauncher = registerForActivityResult(
                 new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
@@ -142,7 +144,7 @@ public class ProfileActivity extends AppCompatActivity {
                 pickImageLauncher.launch("image/*");
             }
         });
-
+        /*
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -154,6 +156,7 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+         */
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -163,6 +166,8 @@ public class ProfileActivity extends AppCompatActivity {
                 studentValues.put("girisYil", girisYilText.getText().toString());
                 studentValues.put("mezunYil", mezunYilText.getText().toString());
                 studentValues.put("email", emailText.getText().toString());
+                studentValues.put("phoneNumber", phoneText.getText().toString());
+                studentValues.put("phoneNumber", bolumText.getText().toString());
 
                 userRef.set(studentValues, SetOptions.merge())
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -215,5 +220,6 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
         //adText.setText("Selahattin");
+
     }
 }

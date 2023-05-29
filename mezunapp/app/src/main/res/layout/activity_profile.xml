@@ -30,7 +30,7 @@
         android:textStyle="bold"
         app:flow_verticalAlign="baseline"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnHome"
+        app:layout_constraintStart_toEndOf="@+id/btnFriendRequest"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -161,7 +161,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btnHome"
+        android:id="@+id/btnFriendRequest"
         android:layout_width="113dp"
         android:layout_height="57dp"
         android:layout_marginStart="10dp"

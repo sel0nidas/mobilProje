@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -24,15 +25,6 @@ public class SignupActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
-
-    /*
-    private String ad = "";
-    private String soyad = "";
-    private int girisYil = 0;
-    private int mezunYil = 0;
-    private String email = "";
-    private String password = "";
-*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +63,8 @@ public class SignupActivity extends AppCompatActivity {
                 studentValues.put("girisYil", std.getGirisYil());
                 studentValues.put("mezunYil", std.getMezunYil());
                 studentValues.put("email", email.getText().toString());
+                studentValues.put("phoneNumber", "");
+                studentValues.put("bolum", "");
                 studentValues.put("profilePhoto", "https://t3.ftcdn.net/jpg/03/42/99/68/360_F_342996846_tHMepJOsXWwbvMpG7uiYpE68wbfQ9e4s.jpg");
 
                 //Toast.makeText(MainActivity.this, mAuth.toString(), Toast.LENGTH_SHORT).show();
@@ -86,10 +80,31 @@ public class SignupActivity extends AppCompatActivity {
                                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                 @Override
                                                 public void onSuccess(Void aVoid) {
-                                                    Toast.makeText(SignupActivity.this, userId, Toast.LENGTH_SHORT).show();
+
+                                                    FirebaseUser user = mAuth.getCurrentUser();
+
+                                                    user.sendEmailVerification()
+                                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                @Override
+                                                                public void onComplete(@NonNull Task<Void> task) {
+                                                                    if (task.isSuccessful()) {
+
+                                                                        Toast.makeText(SignupActivity.this, "Signup is successful, please check email for verification", Toast.LENGTH_SHORT).show();
+                                                                        // Email sent successfully
+                                                                        // Show a message to the user or redirect to a verification screen
+                                                                    } else {
+                                                                        // Email sending failed
+                                                                        // Handle the error
+                                                                        Toast.makeText(SignupActivity.this, "Signup is successful but failure on verification", Toast.LENGTH_SHORT).show();
+
+                                                                    }
+                                                                }
+                                                            });
 
                                                     Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
                                                     startActivity(intent);
+
+
                                                 }
                                             })
                                             .addOnFailureListener(new OnFailureListener() {
@@ -104,11 +119,6 @@ public class SignupActivity extends AppCompatActivity {
                                     Toast.makeText(SignupActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
-
-                // Optionally, you can pass data to the new activity using the putExtra() method
-                //intent.putExtra("key", value);
-
-                // Start the new activity
             }
         });
     }

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/selectPostImage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Announcement Title -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Announcement Title" />
+
+    <EditText
+        android:id="@+id/postTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter the title" />
+
+    <!-- Announcement Content -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Announcement Content" />
+
+    <EditText
+        android:id="@+id/postText"
+        android:layout_width="match_parent"
+        android:layout_height="172dp"
+        android:hint="Enter the content"
+        android:inputType="textMultiLine"
+        android:maxLines="10"
+        android:minLines="4" />
+
+    <!-- Image View -->
+    <ImageView
+        android:id="@+id/postImage"
+        android:layout_width="match_parent"
+        android:layout_height="306dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/user_solid" />
+
+    <!-- Button to select an image -->
+    <Button
+        android:id="@+id/buttonSelectImage"
+        android:layout_width="239dp"
+        android:layout_height="66dp"
+        android:text="Select Image" />
+
+    <!-- Button to post the announcement -->
+    <Button
+        android:id="@+id/buttonPost"
+        android:layout_width="241dp"
+        android:layout_height="71dp"
+        android:text="Post Announcement" />
+</LinearLayout>
